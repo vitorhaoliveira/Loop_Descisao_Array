@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <div id="retorno"></div>
+    <p>Número de peças reprovadas: <span id="resultado"></span></p>
+    <script>
+        let i = 1
+        let x = 0
+        let y = 0
+        let np = ''
+        let estado = ''
+
+        while (i <= 400) {
+            np = Number(prompt('Digite o número da peça: '));
+            while (np % 1 != 0 || np < 1) {
+                alert('Digite só números inteiros e positivos');
+                np = Number(prompt('Digite o número da peça: '));
+            }
+            estado = prompt('Digite se o estado da foi aprovado ou reprovado');
+            while (estado.toLowerCase() != 'aprovado' && estado.toLowerCase() != 'reprovado') {
+                alert('Digite só aprovado ou reprovado')
+                estado = prompt('Digite se o estado da peça foi aprovado ou reprovado');
+            }
+            if (estado.toLowerCase() == 'reprovado') {
+                document.getElementById('resultado').innerHTML += 	
+                x++
+            }
+            if (estado.toLowerCase() == 'aprovado')
+                y++
+            i++
+        }
+
+        document.getElementById('retorno').innerHTML = 'Total de peças aprovadas: '+ y + '<br>' + 'Total de peças reprovadas: '+ x;
+    </script>
+</body>
+</html>

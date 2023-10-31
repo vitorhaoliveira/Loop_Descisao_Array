@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <div id="retorno2"></div> 
+    <div id="retorno1"></div>
+    <script>
+        let reset = Number(prompt("Digite 1 para iniciar o programa e 0 para encerrar"));
+
+        while (reset == 1) {
+            let resultado = '';
+            let Nome = prompt("Digite o nome do contribuinte");
+            let cpf = prompt("Digite o CPF desse contribuinte");
+            let renda = Number(prompt("Escreva a renda anual deste contribuinte"));
+
+            let dp = Number(prompt("Digite o número de dependentes"));
+            let desconto = 110 * dp;
+            let rendLiquid = '';
+
+            if (renda < desconto) {
+            rendLiquid = desconto - renda
+            } 
+            else {
+             rendLiquid = renda - desconto
+            }
+        
+
+        switch (true) {
+            case rendLiquid <= 900:
+                resultado = "Você está isento do imposto"
+                break;
+            case rendLiquid > 900:
+                resultado = rendLiquid * (5 / 100) + " reais de imposto a ser pago"
+                break;
+            case rendLiquid > 5000:
+                resultado = rendLiquid * (10 / 100) + " reais de imposto a ser pago"
+                break;
+            case rendLiquid > 10000:
+                resultado = rendLiquid * (15 / 100) + " reais de imposto a ser pago"
+                break;
+            default:
+                break;
+        }
+
+        reset = Number(prompt("Digite 1 para cadastrar um novo contribuinte e 0 para finalizar o programa"));
+
+        document.getElementById("retorno2").innerHTML += resultado + "</br>Nome do contribuinte: " + Nome + "</br> CPF do contribuinte: " + cpf + "</br> Renda anual: " + renda + "</br> Número de dependentes: " + dp;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+<body>
+    <script>
+        let contaprov = 0
+        let contreprov = 0
+        let notas = []
+        let resultado = ''
+        let media = 0
+        let mediatotal = 0
+        let mediafinal = 0
+        let maiorMedia = -1
+        let menorMedia = 11
+        
+        for (let i = 1; i <= 70; i++) {
+            let matricula = Number(prompt('Digite a matrícula do ' + i + 'º' + ' aluno:'))
+            while (matricula % 1 !== 0 || matricula < 1) {
+                alert('Digite um número inteiro e maior que 0')
+                matricula = Number(prompt('Digite a matrícula do ' + i + 'º' + ' aluno:'))
+            }
+
+            for (let j = 1; j <= 3; j++) {
+                let nota = Number(prompt('Digite a ' + j + 'ª nota:'))
+
+                while (isNaN(nota) || nota < 0 || nota > 10) {
+                    alert('Digite um número positivo entre 0 e 10')
+                    nota = Number(prompt('Digite a ' + j + 'ª nota:'))
+                }
+
+                notas.push(nota)
+                media = (notas[0] + notas[1] + notas[2]) / 3
+            }
+            let aulafreq = Number(prompt('Digite a quantidade de aulas frequentadas pelo ' + i + 'º aluno: '))
+            while (isNaN(aulafreq) || aulafreq < 0 || aulafreq > 32) {
+                alert('Digite a quantidade de aulas frequentadas menor que 33 e maior ou igual a 0')
+                aulafreq = Number(prompt('Digite a quantidade de aulas frequentadas pelo ' + i + 'º aluno:'))
+            }
+            if (media >= 7 && (aulafreq / 32) >= 0.8) {
+                resultado += 'Matrícula: ' + matricula + '<br>' + 'Média final: ' + media.toFixed(2) + '<br>' + 'Resultado: aprovado <br><br>'
+                contaprov++
+            }
+            else if (media < 7 && (aulafreq / 32) < 0.8) {
+                resultado += 'Matrícula: ' + matricula + '<br>' + 'Média final: ' + media.toFixed(2) + '<br>' + 'Resultado: reprovado <br><br>'
+                contreprov++
+            } else
+                resultado += 'Matrícula: ' + matricula + '<br>' + 'Média final: ' + media.toFixed(2) + '<br>' + 'Resultado: reprovado <br><br>'
+		
+            notas = []
+            mediatotal += media
+            mediafinal = mediatotal / 70
+
+            if (media > maiorMedia) {
+                maiorMedia = media;
+            }
+            if (media < menorMedia) {
+                menorMedia = media;
+            }
+
+        }
+
+        document.getElementById('retorno').innerHTML = resultado + '<br>' + 'Média da turma: ' + mediafinal.toFixed(2) + '<br>' + 'Maior média: ' + maiorMedia.toFixed(2) + '<br>' + 'Menor média: ' + menorMedia.toFixed(2) + '<br>' + 'Total de aprovados: ' + contaprov + '<br>' + 'Total de reprovados por nota e frequência: ' + contreprov;
+    </script>
+</body>
+</html>

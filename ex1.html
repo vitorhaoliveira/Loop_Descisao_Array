@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <div id="retorno"></div>
+    <script>
+        let nome = ''
+        let descricao = ''
+        let frequencia = ''
+        let nota = ''
+        
+        while (true) {
+            nome = prompt('Digite o nome da disciplina\nEnvie "." para encerrar o programa')
+            if (nome == 0)
+                break;
+            descricao = prompt('Digite a descrição do conteúdo:')
+            frequencia = Number(prompt('Digite a frequência mínima para a aprovação do aluno:'))
+
+            while (isNaN(frequencia) || frequencia < 0 || frequencia > 100) {
+                alert('Digite um número entre 0 e 100')
+                frequencia = Number(prompt('Frequência mínima para a aprovação do aluno:'))
+            }
+            nota = Number(prompt('Digite a nota mínima para a aprovação do aluno:'))
+
+            while (isNaN(nota) || nota < 0 || nota > 10) {
+                alert('Digite um número entre 0 e 10')
+                nota = Number(prompt('Digite a nota mínima para a aprovação do aluno:'))
+            }
+
+
+            document.getElementById('retorno').innerHTML += 'Nome da disciplina: ' + nome + '<br>' + 'Descrição do conteúdo: ' + descricao + '<br>' + 'Frequência mínima para a aprovação do aluno: ' + frequencia+ '%' + '<br>' + 'Nota mínima para a aprovação do aluno: ' + nota + '<br><br>';
+        }
+    </script>
+</body>
+</html>
